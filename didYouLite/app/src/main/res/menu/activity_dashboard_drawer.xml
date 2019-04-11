@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_profile"
+            android:title="Your Profile" />
+        <item
+            android:id="@+id/nav_family"
+            android:icon="@drawable/ic_family"
+            android:title="Your Family" />
+    </group>
+
+    <item android:title="didYou">
+        <menu>
+            <item
+                android:id="@+id/nav_add"
+                android:icon="@drawable/ic_active"
+                android:title="Add Chores" />
+            <item
+                android:id="@+id/nav_complete"
+                android:icon="@drawable/ic_completed"
+                android:title="Completed Chores" />
+            <item
+                android:id="@+id/nav_rewards"
+                android:icon="@drawable/ic_rewards"
+                android:title="Rewards" />
+        </menu>
+    </item>
+
+</menu>
