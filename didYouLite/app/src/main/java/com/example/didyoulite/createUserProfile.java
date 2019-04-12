@@ -1,19 +1,23 @@
 package com.example.didyoulite;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class createUserProfile extends AppCompatActivity {
 
-    private static int RESULT_LOAD_IMAGE = 1;
+    public String name;
+    public String role;
+    public Integer pic;
+    public String profilePic = String.valueOf(pic);
+
+    //public String picturePath;
+    //private static int RESULT_LOAD_IMAGE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +30,7 @@ public class createUserProfile extends AppCompatActivity {
         ImageButton imgbtn = (ImageButton) findViewById(R.id.imgChk);
         imgbtn.setImageResource(R.mipmap.didyouchk);
 
-        Button buttonLoadImage = (Button) findViewById(R.id.btnProfilePic);
+        /*Button buttonLoadImage = (Button) findViewById(R.id.btnProfilePic);
         buttonLoadImage.setOnClickListener(new View.OnClickListener() {
 
         @Override
@@ -38,11 +42,11 @@ public class createUserProfile extends AppCompatActivity {
 
             startActivityForResult(i, RESULT_LOAD_IMAGE);
         }
-    });
+    });*/
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    /*@Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
@@ -57,13 +61,60 @@ public class createUserProfile extends AppCompatActivity {
             String picturePath = cursor.getString(columnIndex);
             cursor.close();
 
-            // String picturePath contains the path of selected Image
+            this.picturePath = picturePath;
         }
+    }*/
+
+    public void imageBtn (View v) {
+
+        int rId = v.getId();
+        String roles = v.getResources().getResourceEntryName(rId);
+        this.role = roles;
+
+        int imageId = getResources().getIdentifier(roles, "mipmap", "com.example.didyoulite");
+        this.pic = imageId;
+
+
+        ImageView imageView = (ImageView) findViewById(R.id.imageView);
+        imageView.setImageResource(imageId);
+    }
+
+    public void addName() {
+
+        EditText names = (EditText)findViewById(R.id.txtName1);
+        String Uname = names.getText().toString();
+        this.name = Uname;
+
+        //Spinner mySpinner = (Spinner) findViewById(R.id.spnRole);
+        //String roles = mySpinner.getSelectedItem().toString();
+        //this.role = roles;
+
+
+        DBHelper dbH = new DBHelper(this);
+
+        boolean result = dbH.addUser(name, role, profilePic);
+
+
+        if (result == true)
+            Toast.makeText(this, "User Added Successfully", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this, "Error with DB", Toast.LENGTH_SHORT).show();
+
     }
 
     public void ContinueBtnClick(View v){
 
         Intent ProfileIntent = new Intent(this, Dashboard.class);
         startActivity(ProfileIntent);
+        Intent i = new Intent(this, Dashboard.class);
+        i.putExtra("Uname", name);
+        i.putExtra("Urole", role);
+        i.putExtra("Upic", pic);
+
+
+        addName();
+
+
+
     }
 }

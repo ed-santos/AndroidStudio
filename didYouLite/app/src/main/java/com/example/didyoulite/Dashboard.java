@@ -1,8 +1,10 @@
 package com.example.didyoulite;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class Dashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,6 +36,7 @@ public class Dashboard extends AppCompatActivity
             }
         });
 
+        //Drawer Layout handler
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -40,6 +45,25 @@ public class Dashboard extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //displays username, role and profile image onto nav header components
+        View navigationViewHeaderView =  navigationView.getHeaderView(0);
+
+        TextView navName = (TextView)navigationViewHeaderView.findViewById(R.id.txtName);
+        TextView navRole = (TextView)navigationViewHeaderView.findViewById(R.id.txtRole);
+        ImageView navProfile = (ImageView)navigationViewHeaderView.findViewById(R.id.imageView);
+
+        //retrieving logged in user and display name, role and profile pic
+        Intent i = getIntent();
+        String name = i.getStringExtra("Uname");
+        String role = i.getStringExtra("Urole");
+        Integer picPath = i.getIntExtra("Upic",0);
+
+        //int imageId = getResources().getIdentifier(role, "mipmap", "com.example.didyoulite");
+
+        navRole.setText(role);
+        navName.setText(name);
+        navProfile.setImageResource(picPath);
     }
 
     @Override
@@ -59,7 +83,7 @@ public class Dashboard extends AppCompatActivity
         return true;
     }
 
-    /*@Override
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -72,7 +96,7 @@ public class Dashboard extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -81,10 +105,16 @@ public class Dashboard extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-            // Handle the camera action
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frameLayout, new UserProfileFragment());
+            ft.commit();
+
         } else if (id == R.id.nav_family) {
 
-        } else if (id == R.id.nav_add) {
+        } else if (id == R.id.nav_active) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frameLayout, new ActiveChoreFragment());
+            ft.commit();
 
         } else if (id == R.id.nav_complete) {
 

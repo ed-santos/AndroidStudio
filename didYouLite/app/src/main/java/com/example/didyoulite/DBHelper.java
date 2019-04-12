@@ -14,7 +14,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String COL0 = "id"; //All these columns are accessed by index numbers
     private static final String COL1 = "name";
     private static final String COL2 = "role";
-    private static final String COL3 = "profilepic";
+    private static final String COL3 = "profilePic";
 
 
     public DBHelper(Context context){
@@ -25,7 +25,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db){
         //String create = "create table " + Table_name + " (id integer primary key autoincrement , " + COL1/* + COL2*/ + " TEXT)";
-        String create = "create table users (id integer primary key autoincrement, name TEXT, role TEXT, profilepic TEXT)";
+        String create = "create table users (id integer primary key autoincrement, name TEXT, role TEXT, profilePic TEXT)";
         //execute database query
         db.execSQL(create);
     }

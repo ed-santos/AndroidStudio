@@ -13,7 +13,7 @@ public class UserListBaseAdapter extends BaseAdapter {
     String profilePic[];
     String role[];
 
-    //getting view abd binding data with xml components
+    //getting view and binding data with xml components
     LayoutInflater inflater;
 
     public UserListBaseAdapter (Context appcontext, String names[], String profilePic[], String roles[]){
@@ -45,8 +45,8 @@ public class UserListBaseAdapter extends BaseAdapter {
 
         view = inflater.inflate(R.layout.activity_dashboard, null);
 
-        TextView name = view.findViewById(R.id.txtName);
-        TextView pic = view.findViewById(R.id.imgProfile);
+        TextView name = view.findViewById(R.id.txtName1);
+        TextView pic = view.findViewById(R.id.imageView);
         TextView userRole = view.findViewById(R.id.spnRole);
 
         name.setText(names[i]);

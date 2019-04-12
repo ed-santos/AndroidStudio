@@ -7,39 +7,123 @@
     tools:context=".createUserProfile">
 
     <Button
-        android:id="@+id/btnProfilePic"
-        android:layout_width="141dp"
+        android:id="@+id/grandma"
+        android:layout_width="104dp"
         android:layout_height="37dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="#e8e8e8"
-        android:onClick="LoadBtnClick"
-        android:text="Load Picture"
+        android:onClick="imageBtn"
+        android:text="Grandma"
         android:textAllCaps="false"
-        android:textColor="#564256"
+        android:textColor="#fc814A"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mom" />
+
+    <Button
+        android:id="@+id/sister"
+        android:layout_width="104dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="15dp"
+        android:background="#e8e8e8"
+        android:onClick="imageBtn"
+        android:text="Sister"
+        android:textAllCaps="false"
+        android:textColor="#fc814A"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spnRole" />
+        app:layout_constraintTop_toBottomOf="@+id/dad" />
+
+    <Button
+        android:id="@+id/grandpa"
+        android:layout_width="104dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#e8e8e8"
+        android:onClick="imageBtn"
+        android:text="Grandpa"
+        android:textAllCaps="false"
+        android:textColor="#fc814A"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/grandma"
+        app:layout_constraintStart_toEndOf="@+id/sister"
+        app:layout_constraintTop_toBottomOf="@+id/mom" />
+
+    <Button
+        android:id="@+id/dad"
+        android:layout_width="104dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="15dp"
+        android:background="#e8e8e8"
+        android:onClick="imageBtn"
+        android:text="Dad"
+        android:textAllCaps="false"
+        android:textColor="#fc814A"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblRole" />
+
+    <Button
+        android:id="@+id/mom"
+        android:layout_width="104dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#e8e8e8"
+        android:onClick="imageBtn"
+        android:text="Mom"
+        android:textAllCaps="false"
+        android:textColor="#fc814A"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/brother"
+        app:layout_constraintStart_toEndOf="@+id/dad"
+        app:layout_constraintTop_toBottomOf="@+id/lblRole" />
+
+    <Button
+        android:id="@+id/brother"
+        android:layout_width="104dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#e8e8e8"
+        android:onClick="imageBtn"
+        android:text="Brother"
+        android:textAllCaps="false"
+        android:textColor="#fc814A"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblRole" />
 
     <EditText
-        android:id="@+id/txtName"
+        android:id="@+id/txtName1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:ems="10"
+        android:hint="Enter your name"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtStart" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ImageButton
         android:id="@+id/imgChk"
@@ -54,7 +138,7 @@
         android:onClick="ContinueBtnClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgProfile"
+        app:layout_constraintTop_toBottomOf="@+id/grandpa"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
@@ -86,31 +170,35 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imgProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_width="117dp"
+        android:layout_height="91dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnProfilePic"
+        app:layout_constraintTop_toBottomOf="@+id/imgLogo"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <Spinner
-        android:id="@+id/spnRole"
-        android:layout_width="209dp"
-        android:layout_height="53dp"
+    <TextView
+        android:id="@+id/lblRole"
+        android:layout_width="196dp"
+        android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:entries="@array/role_arrays"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="Please select your role"
+        android:textColor="#564256"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtName" />
+        app:layout_constraintTop_toBottomOf="@+id/txtName1" />
 
 </android.support.constraint.ConstraintLayout>
