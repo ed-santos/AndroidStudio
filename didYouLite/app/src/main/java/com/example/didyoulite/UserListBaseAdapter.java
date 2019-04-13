@@ -47,7 +47,7 @@ public class UserListBaseAdapter extends BaseAdapter {
 
         TextView name = view.findViewById(R.id.txtName1);
         TextView pic = view.findViewById(R.id.imageView);
-        TextView userRole = view.findViewById(R.id.spnRole);
+        TextView userRole = view.findViewById(R.id.txtRole);
 
         name.setText(names[i]);
         pic.setText(profilePic[i]);

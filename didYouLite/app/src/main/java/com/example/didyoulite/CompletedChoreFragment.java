@@ -13,10 +13,10 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ActiveChoreFragment extends Fragment {
+public class CompletedChoreFragment extends Fragment {
 
 
-    public ActiveChoreFragment() {
+    public CompletedChoreFragment() {
         // Required empty public constructor
     }
 
@@ -24,14 +24,14 @@ public class ActiveChoreFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getActivity().setTitle("Active Chores");
+        getActivity().setTitle("Completed Chores");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_active_chore, container, false);
+        return inflater.inflate(R.layout.fragment_completed_chore, container, false);
     }
 
 }

@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class createUserProfile extends AppCompatActivity {
 
-    public String name;
+    public String Usersname;
     public String role;
     public Integer pic;
     public String profilePic = String.valueOf(pic);
@@ -83,17 +83,11 @@ public class createUserProfile extends AppCompatActivity {
 
         EditText names = (EditText)findViewById(R.id.txtName1);
         String Uname = names.getText().toString();
-        this.name = Uname;
-
-        //Spinner mySpinner = (Spinner) findViewById(R.id.spnRole);
-        //String roles = mySpinner.getSelectedItem().toString();
-        //this.role = roles;
-
+        this.Usersname = Uname;
 
         DBHelper dbH = new DBHelper(this);
 
-        boolean result = dbH.addUser(name, role, profilePic);
-
+        boolean result = dbH.addUser(Usersname, role, profilePic);
 
         if (result == true)
             Toast.makeText(this, "User Added Successfully", Toast.LENGTH_SHORT).show();
@@ -103,16 +97,15 @@ public class createUserProfile extends AppCompatActivity {
     }
 
     public void ContinueBtnClick(View v){
+        addName();
 
         Intent ProfileIntent = new Intent(this, Dashboard.class);
+        ProfileIntent.putExtra("Uname", Usersname);
+        ProfileIntent.putExtra("Urole", role);
+        ProfileIntent.putExtra("Upic", pic);
+
         startActivity(ProfileIntent);
-        Intent i = new Intent(this, Dashboard.class);
-        i.putExtra("Uname", name);
-        i.putExtra("Urole", role);
-        i.putExtra("Upic", pic);
 
-
-        addName();
 
 
 

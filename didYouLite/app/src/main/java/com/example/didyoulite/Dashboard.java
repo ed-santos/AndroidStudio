@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -27,21 +29,16 @@ public class Dashboard extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         //Drawer Layout handler
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.frameLayout, new HomeFragment());
+        ft.commit();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -58,8 +55,6 @@ public class Dashboard extends AppCompatActivity
         String name = i.getStringExtra("Uname");
         String role = i.getStringExtra("Urole");
         Integer picPath = i.getIntExtra("Upic",0);
-
-        //int imageId = getResources().getIdentifier(role, "mipmap", "com.example.didyoulite");
 
         navRole.setText(role);
         navName.setText(name);
@@ -83,7 +78,7 @@ public class Dashboard extends AppCompatActivity
         return true;
     }
 
-    @Override
+   /*@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -96,7 +91,8 @@ public class Dashboard extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -110,6 +106,9 @@ public class Dashboard extends AppCompatActivity
             ft.commit();
 
         } else if (id == R.id.nav_family) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frameLayout, new FamilyFragment());
+            ft.commit();
 
         } else if (id == R.id.nav_active) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -117,8 +116,14 @@ public class Dashboard extends AppCompatActivity
             ft.commit();
 
         } else if (id == R.id.nav_complete) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frameLayout, new CompletedChoreFragment());
+            ft.commit();
 
         } else if (id == R.id.nav_rewards) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frameLayout, new ActiveChoreFragment());
+            ft.commit();
 
         }
 
